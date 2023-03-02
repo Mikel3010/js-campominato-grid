@@ -20,11 +20,29 @@ function myAppendElement(containerElement, htmlElement){
 let cellNumber = 100; 
 const containerBoard = document.querySelector('.board')
 const buttonPlay = document.getElementById('play');
+const selectedDifficulty = document.getElementById('difficulty')
 
 buttonPlay.addEventListener('click', function(){ 
-    containerBoard.innerHTML='';
-    for(let i = 1; i <= cellNumber ; i++ ){
-        const createdElement = myCreateElement('div', 'cell', i);
-        myAppendElement(containerBoard, createdElement);  
-    } 
+    containerBoard.innerHTML=''
+    const selectedDifficultyValue = selectedDifficulty.value;
+    if(selectedDifficultyValue === 'hard'){
+        let cellNumber = 49;
+        for(let i = 1; i <= cellNumber ; i++ ){
+            const createdElement = myCreateElement('div', 'cell-hard', i);
+            myAppendElement(containerBoard, createdElement);  
+        } 
+    }
+    else if (selectedDifficultyValue === 'medium'){
+        let cellNumber = 81;
+        for(let i = 1; i <= cellNumber ; i++ ){
+            const createdElement = myCreateElement('div', 'cell-medium', i);
+            myAppendElement(containerBoard, createdElement);  
+        } 
+    }
+    else{
+        for(let i = 1; i <= cellNumber ; i++ ){
+            const createdElement = myCreateElement('div', 'cell', i);
+            myAppendElement(containerBoard, createdElement);  
+        } 
+    }
 })
